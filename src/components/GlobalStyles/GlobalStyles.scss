@@ -1,0 +1,33 @@
+@import 'normalize.css';
+@font-face {
+    font-family: 'TikTok Display';
+    src: url('../../assets/fonts/TiktokDisplay-Bold.otf/') format('opentype');
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'TikTok Display';
+    src: url('../assets/fonts/TikTokDisplay-Regular.otf') format('opentype');
+    font-weight: normal;   
+}
+@font-face {
+    font-family: 'TikTok Display';
+    src: url('../assets/fonts/TikTokDisplay-Medium.otf') format('opentype');
+    font-weight: 500;   
+}
+*{
+    box-sizing: border-box;
+}
+:root{
+    --primary-color: #ff3b5c;
+
+}
+html{
+    font-size: 62.5%;
+}
+
+/* Áp dụng font cho toàn bộ body */
+body {
+    font-family: 'TikTok Display', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+}
