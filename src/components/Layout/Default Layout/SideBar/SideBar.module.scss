@@ -1,0 +1,25 @@
+
+.wrapper{
+        /* Vị trí của sidebar trong grid */
+            /* Màu nền cho sidebar */
+            color: #fff;
+            /* Màu chữ */
+            padding: 20px;
+            /* Padding chung */
+            overflow-y: auto;
+            /* Thanh cuộn khi nội dung vượt quá */
+          
+}
+.sidebarInner li {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 2rem;
+        color: rgba(255, 255, 255, 0.9);
+            font-family: "IBM Plex Sans", TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 24px;
+            margin-left: 8px;
+}
+    

@@ -14,12 +14,23 @@
     src: url('../assets/fonts/TikTokDisplay-Medium.otf') format('opentype');
     font-weight: 500;   
 }
-*{
-    box-sizing: border-box;
-}
 :root{
     --primary-color: #ff3b5c;
-
+    --full-background: #121212;
+    --primary-background: rgba(255, 255, 255, 0.12);
+    --fixed-padding : 0 26px;
+}
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+li{
+    list-style: none;
 }
 html{
     font-size: 62.5%;
@@ -30,4 +41,5 @@ body {
     font-family: 'TikTok Display', sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
+    background-color: var(--full-background);
 }
