@@ -13,8 +13,11 @@ function SideBar() {
                     </li>
                     <li>
 <<<<<<< HEAD
+<<<<<<< HEAD
                           <FontAwesomeIcon icon={faHome} />
                         <span>Dành cho bạn</span>
+=======
+>>>>>>> 2b622611381b866b0ba5a092df2555f7a6f3c907
 =======
 >>>>>>> 2b622611381b866b0ba5a092df2555f7a6f3c907
                         
