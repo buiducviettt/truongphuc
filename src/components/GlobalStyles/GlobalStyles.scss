@@ -19,6 +19,12 @@
     --full-background: #121212;
     --primary-background: rgba(255, 255, 255, 0.12);
     --fixed-padding : 0 26px;
+    --color-hover : rgb(255, 59, 92);
+}
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 *{
     box-sizing: border-box;

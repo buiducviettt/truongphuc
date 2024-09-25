@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import Images from '../../../../assets/image/images';
+import Images from '../../../../assets/image/Images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark,faMagnifyingGlass,faMessage,faUser } from '@fortawesome/free-solid-svg-icons'
 import { Wrapper as PopperWrapper } from '../../Popper';
