@@ -1,6 +1,6 @@
 import styles from './Sidebar.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHome } from '@fortawesome/free-solid-svg-icons'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
 function SideBar() {
     return ( 
         <div className={styles.wrapper}>
@@ -10,7 +10,11 @@ function SideBar() {
                         <FontAwesomeIcon icon={faHome} />
                         <span>Dành cho bạn</span>
                     </li>
-                    <li></li>
+                    <li>
+                          <FontAwesomeIcon icon={faHome} />
+                        <span>Dành cho bạn</span>
+                        
+                    </li>
                 </ul>
             </div>
             

@@ -25,10 +25,12 @@ header {
         
        
 }
-.hdSearchWrapper{
-        width: 516px;
+.hdSearchWrapper{  
         position: relative;
 
+}
+.searchResult ,.hdSearchWrapper{
+    width: 516px;
 }
 .hdSearch{
     padding: 12px 16px;
@@ -93,6 +95,19 @@ header {
     color: white;
    
  }
+ .searchContainer{
+    position: relative;
+
+ }
+ //account list
+ .accountList{
+    padding-left: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+ }
+
 
 
 
