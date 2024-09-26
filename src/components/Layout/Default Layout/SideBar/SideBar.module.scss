@@ -27,30 +27,25 @@
             cursor: pointer; /* Đổi con trỏ chuột khi hover */
             transition: all 0.3s ease; /* Hiệu ứng mượt mà khi thay đổi */
 
-            a {
+            span {
                 text-decoration: none; /* Xóa gạch chân của link */
                 color: inherit; /* Kế thừa màu từ li */
                 transition: color 0.3s ease; /* Hiệu ứng mượt mà khi thay đổi màu */
-            }
-
-            .sideBarIcons img {
-                width: 24px;
-                filter: brightness(0) invert(1) sepia(1) saturate(500%) hue-rotate(0deg); /* Đổi bộ lọc để có màu sắc mong muốn */
-                transition: filter 0.3s ease;
             }
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.1); /* Màu nền khi hover */
                 color: var(--color-hover); /* Đổi màu chữ khi hover */
 
-                a {
+                span {
                     color: var(--color-hover); /* Đổi màu chữ của link khi hover */
-                }
-
-                .sideBarIcons img {
-                    filter: brightness(0) invert(1) sepia(1) hue-rotate(320deg); /* Đổi màu ảnh thành đỏ */
                 }
             }
         }
     }
+}
+.avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }

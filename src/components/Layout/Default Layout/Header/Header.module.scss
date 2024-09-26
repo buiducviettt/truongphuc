@@ -27,8 +27,8 @@ header {
 }
 .hdSearchWrapper{  
         position: relative;
-
 }
+
 .searchResult ,.hdSearchWrapper{
     width: 516px;
 }
@@ -36,7 +36,9 @@ header {
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.12);
     border-radius: 92px;
-    
+    transition: border 0.5s ease-in;
+    &:hover {
+            border: 1px solid white;}
 }
 .hdSearch input {
         font-weight: 400;
@@ -59,7 +61,7 @@ header {
     color: rgb(161, 156, 156);
 }
 .deleteIconFont{
-    color: white;
+    color: var(--color-secondary-text);
     font-size: 2rem;
     margin-right: 2rem;
 }
@@ -75,7 +77,17 @@ header {
     outline: none;
     border: none;
     background: transparent;
+         &:hover {
+             background: rgba(255, 255, 255, 0.08);
+         }
 }
+.searchButtonWrap svg {
+    color: var(--color-secondary-text);
+    &:hover{
+        color: white;
+    }
+}
+
 .LineSplitSearch{
     width: 1px;
     height: 30px;
@@ -107,6 +119,14 @@ header {
     flex-direction: column;
     gap: 10px;
  }
+ .accountTitle{
+    color: var(--color-secondary-text);
+ }
+.avatar img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
 
 
 

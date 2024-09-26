@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import Images from '../../../../assets/image/Images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark,faMagnifyingGlass,faMessage,faUser } from '@fortawesome/free-solid-svg-icons'
+import { faXmark,faMagnifyingGlass,faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Wrapper as PopperWrapper } from '../../Popper';
 import AccountItem from '../../../AccountItem';
 import Tippy from '@tippyjs/react/headless';
@@ -30,7 +30,7 @@ function Header() {
         <div className={styles.searchResult} tabIndex="-1" {...attrs}>
       <PopperWrapper>
         <div className={styles.accountWrapper}>
-          <h3>Tài khoản</h3>
+          <h4 className={styles.accountTitle}>Tài khoản</h4>
           <ul className={styles.accountList}>
         <li><AccountItem /></li>
         <li><AccountItem /></li>
@@ -68,12 +68,10 @@ function Header() {
               <FontAwesomeIcon className='messageIcon' icon={faMessage} />
               {/* noti */}
             </div>
-            <div className="hdProfileWrap">
-              <div className="profileIcon">
-                <FontAwesomeIcon className='userIcon' icon={faUser} />
-
-              </div>
-
+            <div className="hdProfileWrap">    
+               <div className={styles.avatar}>
+               <img src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/e0631658a4c2863bc8f62dc95718713f.jpeg?lk3s=a5d48078&nonce=89852&refresh_token=927bea9797a8ffc57658780748d9601d&x-expires=1727492400&x-signature=UEaAWgQSKc7evnKSj286Z4trRgY%3D&shp=a5d48078&shcp=81f88b70" alt="" />
+            </div> 
             </div>
           </div>
         </div>

@@ -20,6 +20,9 @@
     --primary-background: rgba(255, 255, 255, 0.12);
     --fixed-padding : 0 26px;
     --color-hover : rgb(255, 59, 92);
+    --color-secondary-text: #ffffff80;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    --transition-color: color 0.3s ease;
 }
 img {
     width: 100%;
@@ -52,7 +55,7 @@ html{
 
 /* Áp dụng font cho toàn bộ body */
 body {
-    font-family: 'TikTok Display', sans-serif;
+        font-family: "IBM Plex Sans", TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     background-color: var(--full-background);
