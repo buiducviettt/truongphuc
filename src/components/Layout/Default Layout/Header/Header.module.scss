@@ -1,75 +1,87 @@
-
 .hdLogo img {
     width: 150px;
     height: auto;
 }
+
 header {
     width: 100%;
     top: 0px;
     position: fixed;
     height: 70px;
-        box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px;
-        background: #121212;
-        display: flex;
-            align-items: center;
-            z-index: 3000;
+    box-shadow: rgba(255, 255, 255, 0.12) 0px 1px 1px;
+    background: #121212;
+    display: flex;
+    align-items: center;
+    z-index: 3000;
 
 }
-.hdInner{
+
+.hdInner {
     width: 100%;
-        display: flex ;
-        align-items: center;
-        justify-content: space-between;
-        padding: var(--fixed-padding);
-        
-        
-       
-}
-.hdSearchWrapper{  
-        position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--fixed-padding);
+
+
+
 }
 
-.searchResult ,.hdSearchWrapper{
+.hdSearchWrapper {
+    position: relative;
+}
+
+.searchResult,
+.hdSearchWrapper {
     width: 516px;
 }
-.hdSearch{
+
+.hdSearch {
     padding: 12px 16px;
     background: rgba(255, 255, 255, 0.12);
     border-radius: 92px;
+    border: 1px solid transparent;
     transition: border 0.5s ease-in;
+
     &:hover {
-            border: 1px solid white;}
+        border: 1px solid white;
+    }
 }
+
 .hdSearch input {
-        font-weight: 400;
-            font-size: 16px;
-            line-height: 21px;
-            border: none;
-            background: transparent;
-            outline: none;
-            padding: 0px;
-            width: 100%;
-            box-shadow: none;
-            
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0px;
+    width: 100%;
+    box-shadow: none;
 }
-.inputSearchHd:focus{
+
+.inputSearchHd:focus {
     background: transparent !important;
     color: white;
     box-shadow: none;
 }
-.inputSearchHd::placeholder{
+
+.inputSearchHd::placeholder {
     color: rgb(161, 156, 156);
 }
-.deleteIconFont{
+
+.deleteIconFont {
     color: var(--color-secondary-text);
     font-size: 2rem;
     margin-right: 2rem;
 }
-.searchButton{
+
+.searchButton {
     color: white;
     font-size: 2rem;
 }
-.searchButtonWrap{
+
+.searchButtonWrap {
     padding: 11px 16px 11px 12px;
     margin: -12px -16px -12px 0px;
     font-size: 0px;
@@ -77,65 +89,67 @@ header {
     outline: none;
     border: none;
     background: transparent;
-         &:hover {
-             background: rgba(255, 255, 255, 0.08);
-         }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
 }
+
 .searchButtonWrap svg {
     color: var(--color-secondary-text);
-    &:hover{
+
+    &:hover {
         color: white;
     }
 }
 
-.LineSplitSearch{
+.logInButton {
+    background: var(--primary-color) !important;
+}
+
+.LineSplitSearch {
     width: 1px;
     height: 30px;
     margin: -3px 0;
-    background: rgba(255, 255, 255, .12);}
+    background: rgba(255, 255, 255, .12);
+}
 
- .uploadButton{
-    background: var(--primary-background);
-    border: none;
-    padding: 0px 20px;
-    height: 40px;
-    color: white;
- }
- .hdRightInner{
+.hdRightInner {
     align-items: center;
     gap: 20px;
     color: white;
-   
- }
- .searchContainer{
+
+}
+
+.searchContainer {
     position: relative;
 
- }
- //account list
- .accountList{
+}
+
+//account list
+.accountList {
     padding-left: 0;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
- }
- .accountTitle{
+}
+
+.accountTitle {
     color: var(--color-secondary-text);
- }
-.avatar img{
+}
+
+.avatar img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
+.hoverDot{
+  width: 2rem;
+   
+}
+// menuItems
+.menuItems{
+    width: 224px;
 
-
-
-
-
-
-
-
-
-
-
-
+}

@@ -1,12 +1,27 @@
 import styles from './Header.module.scss';
 import Images from '../../../../assets/image/Images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark,faMagnifyingGlass,faMessage } from '@fortawesome/free-solid-svg-icons'
+import { faXmark,faMagnifyingGlass,faHouse,faLanguage } from '@fortawesome/free-solid-svg-icons'
 import { Wrapper as PopperWrapper } from '../../Popper';
+import PopperMenu from '../../Popper/PopperMenu';
 import AccountItem from '../../../AccountItem';
+import Button from '../../../Button';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 import { useEffect, useState } from 'react';
+const HdMenuContent = [
+  
+  {
+    icon: <FontAwesomeIcon icon={faHouse} />,
+    title: 'Công cụ dành cho nhà sáng tạo',
+    to:'/tools'
+  },
+  {
+    icon: <FontAwesomeIcon icon={faLanguage} />,
+    title: 'Tiếng Việt',
+  }
+
+]
 function Header() {
   const [searchResult, setSearchResult] = useState([])
   useEffect(() => {
@@ -40,7 +55,6 @@ function Header() {
           </div>
       </PopperWrapper>
         </div>
-   
     )}>
                 <div className={styles.hdSearchWrapper}>
                 <div className={`input-group ${styles.hdSearch}`}>
@@ -54,25 +68,20 @@ function Header() {
                 <button className={styles.searchButtonWrap} >
                   <FontAwesomeIcon  className={styles.searchButton} icon={faMagnifyingGlass} />
                      </button>
-                </Tippy>
-                
+                </Tippy>       
             </div>         
           </div>
           </Tippy>
-          
         <div className="hdRight">
           <div className={ `${styles.hdRightInner} d-flex`}>
-            <button className= {` ${styles.uploadButton}`}> <span>+</span>Tải lên </button>
-            <div className="messageButtonWrap">
-              {/* icon */}
-              <FontAwesomeIcon className='messageIcon' icon={faMessage} />
-              {/* noti */}
-            </div>
-            <div className="hdProfileWrap">    
-               <div className={styles.avatar}>
-               <img src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/e0631658a4c2863bc8f62dc95718713f.jpeg?lk3s=a5d48078&nonce=89852&refresh_token=927bea9797a8ffc57658780748d9601d&x-expires=1727492400&x-signature=UEaAWgQSKc7evnKSj286Z4trRgY%3D&shp=a5d48078&shcp=81f88b70" alt="" />
-            </div> 
-            </div>
+            <Button className= {` ${styles.uploadButton}`}> <span>+</span>Tải lên </Button>
+            <Button className={` ${styles.logInButton}`}> Đăng nhập </Button>
+            <PopperMenu
+            menuList={ HdMenuContent}>
+            <div className={styles.hoverDot}>
+              <img src={Images.hoverdot} alt="" />
+              </div>
+              </PopperMenu>
           </div>
         </div>
         
