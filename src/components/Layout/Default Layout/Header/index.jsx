@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import Images from '../../../../assets/image/Images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark,faMagnifyingGlass,faHouse,faLanguage } from '@fortawesome/free-solid-svg-icons'
+import { faXmark,faMagnifyingGlass,faHouse,faLanguage,faCircleQuestion } from '@fortawesome/free-solid-svg-icons'
 import { Wrapper as PopperWrapper } from '../../Popper';
 import PopperMenu from '../../Popper/PopperMenu';
 import AccountItem from '../../../AccountItem';
@@ -19,6 +19,11 @@ const HdMenuContent = [
   {
     icon: <FontAwesomeIcon icon={faLanguage} />,
     title: 'Tiếng Việt',
+  },
+  {
+    icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+    title: 'Phản hồi và trợ giúp',
+    to:'/support'
   }
 
 ]

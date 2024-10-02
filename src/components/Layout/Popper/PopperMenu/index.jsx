@@ -1,8 +1,11 @@
 import MenuItems from './MenuItems';
 import styles from './PopperMenu.module.scss';
 import Tippy from '@tippyjs/react/headless';
+// eslint-disable-next-line react/prop-types
 function PopperMenu({ children, menuList = [] }) {
-    return (<Tippy
+    return (
+        <Tippy
+            delay={[0,300]}
           interactive={true}
               placement='bottom-end'
        render={(attrs) => (
@@ -13,10 +16,10 @@ function PopperMenu({ children, menuList = [] }) {
                    })}
                </div>          
         </div>
-        )}>
-
+            )}>
             {children}
-    </Tippy>)
+        </Tippy>)
+    
 }
 
 export default PopperMenu;
