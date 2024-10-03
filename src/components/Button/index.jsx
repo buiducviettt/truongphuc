@@ -1,14 +1,27 @@
-import styles from './Button.module.scss'
+import styles from './Button.module.scss';
+import { Link } from 'react-router-dom';
+
 // eslint-disable-next-line react/prop-types
-const Button = ({ onClick, type = 'button', disabled = 'false',className, children,...passProps }) => {
+const Button = ({ to, onClick, type = 'button', disabled = false, className, children, ...passProps }) => {
+    let Component = 'button';
+
+    // Nếu có 'to', dùng 'Link' thay cho 'button'
+    if (to) {
+        Component = Link;
+        passProps.to = to; // Truyền thuộc tính 'to' vào 'Link'
+    }
+
     return (
-        <button 
-            className={`${ styles.wrapper } ${className}`}
+        <Component
+            className={`${styles.wrapper} ${className}`}
             type={type}
             onClick={onClick}
             disabled={disabled}
             {...passProps}
-        >{children}</button>
-    )
+        >
+            {children}
+        </Component>
+    );
 }
-export default Button
+
+export default Button;
