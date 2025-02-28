@@ -292,7 +292,7 @@
   z-index: $index;
 }
 
-@mixin affter($color: var(--c-pri)) {
+@mixin affter($color: #8c8c8c) {
   &::after {
     position: absolute;
     content: '';
@@ -302,7 +302,7 @@
     right: 0;
     background: $color;
     transition: all 0.4s ease;
-    z-index: 1;
+    z-index: -1;
     pointer-events: none;
   }
 }
