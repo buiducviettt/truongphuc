@@ -18,11 +18,21 @@
   --color-secondary-text: #ffffff80;
   --background-hover: rgba(255, 255, 255, 0.1);
   --transition-color: color 0.3s ease;
+  --gradient-main: linear-gradient(to bottom, #014687 0%, #2e7fb0 100%);
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+.view_section.is_inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+.view_section {
+  opacity: 0;
+  transform: translateY(50px); /* Để có hiệu ứng di chuyển lên */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 a {
   text-decoration: none !important;

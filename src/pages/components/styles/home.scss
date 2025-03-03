@@ -75,33 +75,97 @@
       }
       .home_intro {
         position: relative;
-        // background-color: var(--secondary-color);
-        // height: calc(1164px - 10rem);
-        &_wrapper {
-          padding: 100px 0;
-          top: -4rem;
+        .substract_wrapper {
           position: relative;
-          background-image: url('../../../assets/image/homepage/homeintro.svg');
-          background-size: cover;
-          background-repeat: no-repeat;
-          min-height: 1164px;
-          z-index: 2;
-          .home_intro_inner {
-            position: relative;
-            z-index: 4;
+          display: flex;
+          .subtract2 {
+            position: absolute;
+            width: 30%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 5s ease-out forwards;
+          }
+          .subtract {
+            width: 70%;
+            position: absolute;
+            top: -6rem;
+            right: 0;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 2s ease-out forwards;
           }
         }
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0; /* hoặc bottom: 0 nếu muốn thanh ở dưới */
-          left: 0px;
-          width: 55rem;
-          height: 6rem; /* Điều chỉnh độ dày */
-          background-color: var(--secondary-color); /* Màu vàng */
-          z-index: 1; /* Đảm bảo hiển thị trên nền */
+
+        &_wrapper {
+          background: var(--gradient-main);
+          .home_intro_inner {
+            padding-top: 12rem;
+          }
+          .home_intro_inner {
+            .intro_content {
+              display: flex;
+              flex-direction: row;
+
+              justify-content: space-between;
+              .right_content {
+                display: flex;
+                gap: 80px;
+                flex-direction: column;
+              }
+              .intro_desc {
+                max-width: 700px;
+                .text-white {
+                  text-align: justify;
+                }
+                .box_numbers {
+                  display: flex;
+                  justify-content: space-between;
+                  .number_detail {
+                    background: linear-gradient(
+                      -15deg,
+                      #fff686 0%,
+                      #ffc700 100%
+                    );
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    color: transparent !important;
+                    font-weight: bold;
+                    @include fz-72;
+                  }
+                }
+              }
+              .intro_title {
+                max-width: 500px;
+                font-weight: 700;
+                .highlight_text {
+                  color: var(--secondary-color);
+                }
+              }
+              .text_title {
+                @include fz-48;
+              }
+            }
+          }
         }
       }
     }
+  }
+}
+// keyframe
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px); /* Bắt đầu từ vị trí thấp hơn và ẩn */
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(
+      0
+    ); /* Ở giữa, hình ảnh có thể hơi lên trên và ẩn một phần */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Cuối cùng, hình ảnh hoàn toàn hiển thị */
   }
 }
