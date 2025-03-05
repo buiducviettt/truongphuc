@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Images from '../../assets/image/Images';
 import { Link } from 'react-router-dom';
 const Button = ({ title, className, link }) => {

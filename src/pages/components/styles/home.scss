@@ -98,7 +98,11 @@
         }
 
         &_wrapper {
-          background: var(--gradient-main);
+          // background: var(--gradient-main);
+          background-image: url('../../../assets/image/homepage/bg.png') !important;
+          background-size: cover;
+          background-repeat: no-repeat;
+
           .home_intro_inner {
             padding-top: 12rem;
           }
@@ -144,6 +148,150 @@
               }
               .text_title {
                 @include fz-48;
+              }
+            }
+          }
+          .home_intro_gallery {
+            padding-top: 80px;
+            .slider_large {
+              img {
+                border-radius: 14px;
+              }
+            }
+            .slider_grid {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              img {
+                border-radius: 14px;
+              }
+              .large {
+                img {
+                  max-height: 150px;
+                }
+              }
+              .small {
+                display: grid;
+                grid-template-columns: 1fr 2fr; /* Chia thành 2 ảnh nhỏ */
+                gap: 10px;
+              }
+            }
+          }
+          .reason_wrapper {
+            padding: 12rem 0;
+            .reason_header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+          }
+        }
+      }
+      .card_item {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        .overlay {
+          border-radius: 8px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: linear-gradient(
+            to bottom,
+            #09193500 0%,
+            rgba(9, 25, 53, 0.5) 100%
+          );
+          z-index: 1;
+        } /* Điều chỉnh kích thước theo ý muốn */
+        .image_wrapper {
+          border-radius: 8px !important;
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1/1; /* Giữ hình vuông */
+          overflow: hidden;
+          .card_content {
+            z-index: 2;
+            position: absolute;
+            top: 50%;
+            padding: 2.4rem;
+            /* Tạo lớp nền mờ */
+          }
+        }
+      }
+      .partner_section {
+        .inner {
+          .logo_partner {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 cột */
+            grid-template-rows: repeat(2, auto); /* 2 hàng */
+            gap: 20px; /* Khoảng cách giữa các logo */
+          }
+          .logo_img {
+            img {
+              max-width: 200px;
+              max-height: 200px;
+            }
+          }
+        }
+      }
+      .services_section {
+        .service_header {
+        }
+        .service_body {
+          padding-top: 6rem;
+          .services_list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.4rem;
+            .service_info_wrapper {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              .service_info {
+                .inner {
+                }
+              }
+            }
+            .service_img {
+              background-color: #fffee7;
+              padding: 1rem 1rem 0 1rem;
+              border-radius: 20px;
+              img {
+                max-height: 400px;
+                border-radius: 20px;
+              }
+            }
+          }
+        }
+      }
+      .faq_section {
+        .faq-row-wrapper {
+          background: transparent !important;
+
+          h2,
+          .row-title-text,
+          .row-content-text {
+            color: white;
+          }
+          .arrow-image {
+            filter: brightness(0) saturate(100%) invert(100%) sepia(100%)
+              saturate(1%) hue-rotate(137deg) brightness(103%) contrast(101%);
+          }
+        }
+      }
+      .review_section {
+        .review_box {
+          .inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            .logo {
+              img {
+                width: 100px;
+                height: 100px;
               }
             }
           }

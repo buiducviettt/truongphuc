@@ -1,0 +1,16 @@
+const CardItem = ({ icon, title, desc, img }) => {
+  return (
+    <div className="card_item">
+      <div className="overlay"></div>
+      <div className="image_wrapper">
+        <img src={img} alt="" className="img_bg" />
+        <div className="card_content">
+          <img src={icon} alt={title} className="icon" />
+          <h3 className="text-white">{title}</h3>
+          <p className="text-white">{desc}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default CardItem;
