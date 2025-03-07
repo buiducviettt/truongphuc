@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 import GlobalStyle from './components/GlobalStyles/index.jsx';
 import Lenis from '@studio-freight/lenis';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const lenis = new Lenis({
   duration: 1.2, // Tốc độ cuộn
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Hiệu ứng easing
@@ -13,8 +15,13 @@ function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
 }
-
 requestAnimationFrame(raf);
+// Khi có sự kiện scroll từ Lenis, cập nhật AOS
+lenis.on('scroll', AOS.refresh);
+
+AOS.init({
+  once: true, // Đảm bảo AOS chỉ chạy một lần cho mỗi phần tử
+});
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GlobalStyle>

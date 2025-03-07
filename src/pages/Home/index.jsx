@@ -1,11 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import DefaultLayout from '../../layouts/Default Layout';
-import { useEffect, useState } from 'react';
-import BlurText from '../../components/BlurText';
+import { useEffect, useRef, useState } from 'react';
 import '../components/styles/home.scss';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 import CountUp from 'react-countup';
 import Images from '../../assets/image/Images';
 import { useInView } from 'react-intersection-observer';
@@ -14,14 +11,19 @@ import Button from '../../components/Button';
 import Typewriter from 'typewriter-effect';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css/autoplay';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import CardItem from '../components/CardItem';
 import Faq from 'react-faq-component';
 import Reviews from '../../components/Reviews';
+import ButtonSlider from '../../components/Button/ButtonSlider';
+import NewsCard from '../components/NewsCard';
+import Footer from '../../layouts/Default Layout/Footer';
+import FormContact from '../components/FormContact';
 
 const Home = () => {
   const { ref, inView } = useInView({ threshold: 0.4, triggerOnce: true });
+  const swiperRef = useRef();
   const thumbnail = [
     Images.bannerhome,
     Images.thumb3,
@@ -118,15 +120,6 @@ const Home = () => {
     };
     fetchData();
   }, []);
-
-  useEffect(() => {
-    // 2️⃣ Khởi tạo animation AOS
-    AOS.init({
-      duration: 1500, // Thời gian chạy animation (ms)
-      once: 0, // Chỉ chạy một lần khi scroll xuống
-    });
-  }, []);
-
   useEffect(() => {
     // 4️⃣ Thiết lập interval thay đổi ảnh
     const interval = setInterval(() => {
@@ -167,14 +160,9 @@ const Home = () => {
               <div className="banner_overlay"></div>
               <div className="container">
                 <div className="home_banner_content" data-aos="fade-up">
-                  <BlurText
-                    text={dataHome.banner_section.title}
-                    delay={150}
-                    animateBy="words"
-                    direction="top"
-                    className="banner_title text-white"
-                  />
-
+                  <h1 className="banner_title text-white" data-aos="fade-up">
+                    {dataHome.banner_section.title}
+                  </h1>
                   <p className="text-white ">
                     {dataHome.banner_section.subtitle}
                   </p>
@@ -261,49 +249,66 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="home_intro_gallery">
-                  <Swiper
-                    className="gallery"
-                    spaceBetween={20}
-                    slidesPerView={5}
-                    loop={true}
-                    autoplay={{
-                      delay: 0, // Thời gian giữa mỗi slide (3s)
-                      disableOnInteraction: false, // Không dừng khi người dùng tương tác
-                    }}
-                    freeMode={true}
-                    speed={5000} // Tốc độ chuyển slide (1s)
-                    modules={[Autoplay]} // Thêm module autoplay
-                  >
-                    {slider_home.map((slider) => (
-                      <SwiperSlide key={slider.id}>
-                        {/* layout ảnh lớn */}
-                        {slider.type === 'single' ? (
-                          <div className="slider_large">
-                            <img
-                              src={slider.image}
-                              alt=""
-                              className="image_large"
-                            />
-                          </div>
-                        ) : (
-                          <div className="slider_grid">
-                            {/* {slider.images.map((img, index) => (
+                  <div className="swiper_container">
+                    <Swiper
+                      className="swiper swiper_gallery"
+                      spaceBetween={20}
+                      slidesPerView={4}
+                      centeredSlides={true}
+                      loop={true}
+                      autoplay={{
+                        delay: 0, // Thời gian giữa mỗi slide (3s)
+                        disableOnInteraction: false, // Không dừng khi người dùng tương tác
+                      }}
+                      freeMode={true}
+                      speed={5000} // Tốc độ chuyển slide (1s)
+                      modules={[Autoplay]} // Thêm module autoplay
+                    >
+                      {slider_home.map((slider) => (
+                        <SwiperSlide key={slider.id}>
+                          {/* layout ảnh lớn */}
+                          {slider.type === 'single' ? (
+                            <div className="slider_large">
+                              <img
+                                src={slider.image}
+                                alt=""
+                                className="image_large"
+                              />
+                            </div>
+                          ) : (
+                            <div className="slider_grid">
+                              {/* {slider.images.map((img, index) => (
                               <img key={index} src={img} alt="" />
                             ))} */}
-                            <div className="large">
-                              <img src={slider.images[0]} alt="" />
+                              <div className="large">
+                                <img src={slider.images[0]} alt="" />
+                              </div>
+                              <div className="small">
+                                <img src={slider.images[1]} alt="" />
+                                <img src={slider.images[2]} alt="" />
+                              </div>
                             </div>
-                            <div className="small">
-                              <img src={slider.images[1]} alt="" />
-                              <img src={slider.images[2]} alt="" />
-                            </div>
-                          </div>
-                        )}
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+                          )}
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </div>
                 </div>
                 <div className="reason_wrapper" data-aos="fade-up">
+                  <div className="group_decor">
+                    <div className="decor decor_1">
+                      <img src={Images.cloud} alt="" />
+                    </div>
+                    <div className="decor decor_2">
+                      <img src={Images.cloud} alt="" />
+                    </div>
+                    <div className="decor decor_3">
+                      <img src={Images.cloud} alt="" />
+                    </div>
+                    <div className="decor decor_4">
+                      <img src={Images.cloud} alt="" />
+                    </div>
+                  </div>
                   <div className="container">
                     <div className="reason_wrapper_inner">
                       <div className="reason_header">
@@ -371,7 +376,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="partner_section sec_gap" data-aos="fade-up">
+                <div className="partner_section" data-aos="fade-up">
                   <div className="inner">
                     <Swiper
                       className="row_1"
@@ -419,12 +424,25 @@ const Home = () => {
                   </div>
                 </div>
                 {/* Section dịch vụ */}
-                <div className="sec_gap services_section" data-aos="fade-up">
+                <div className="sec_gap services_section">
+                  <div className="bird_animation">
+                    <div className=" bird bird_1"></div>
+                    <div className=" bird bird_2"></div>
+                    <div className=" bird bird_3"></div>
+                    <div className="bird bird_4"></div>
+                    <div className=" bird bird_5"></div>
+                  </div>
                   <div className="container">
                     <div className="inner">
-                      <div className="service_header d-flex flex-column justify-content-center">
+                      <div
+                        className="service_header d-flex flex-column justify-content-center"
+                        data-aos="fade-up"
+                      >
                         <h2 className="text-white title text-center">
-                          Dịch vụ mà chúng tôi cung cấp
+                          Dịch vụ mà{' '}
+                          <span className="is_highlight">
+                            chúng tôi cung cấp
+                          </span>
                         </h2>
                         <p className="desc text-white text-justify">
                           Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -530,7 +548,10 @@ const Home = () => {
                         <div className="col-12 col-md-6">
                           <h2 className="title text-white">
                             Có câu hỏi? <br></br>
-                            Chúng tôi sẵn sàng trả lời!
+                            <span className="is_highlight">
+                              {' '}
+                              Chúng tôi sẵn sàng trả lời!
+                            </span>
                           </h2>
                           <p className="desc text-white">
                             Everything you need to know about the product and
@@ -577,7 +598,103 @@ const Home = () => {
                   </div>
                 </div>
                 {/* Section  news */}
-                <div className="sec_gap news_section" data-aos="fade-up"></div>
+                <div className="sec_gap news_section" data-aos="fade-up">
+                  <div className="inner">
+                    <div className="container">
+                      <div className="news_header d-flex align-items-center justify-content-between">
+                        <h2 className="title text-white">
+                          Tin tức{' '}
+                          <span className="is_highlight">truyền thông</span>
+                        </h2>
+                        <div
+                          className="news_cta d-flex"
+                          style={{ gap: '1rem' }}
+                        >
+                          <div className="slider_btn">
+                            <ButtonSlider
+                              onPrev={() => swiperRef.current?.slidePrev()}
+                              onNext={() => swiperRef.current?.slideNext()}
+                            />
+                          </div>
+                          <Button
+                            title="Tất cả dịch vụ"
+                            className="seemore_btn"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="news_body">
+                      <div className="swiper_container">
+                        <Swiper
+                          modules={[Navigation]}
+                          centeredSlides={true}
+                          spaceBetween={20}
+                          slidesPerView={4.5}
+                          loop={true}
+                          onSwiper={(swiper) => (swiperRef.current = swiper)}
+                        >
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <NewsCard
+                              image={Images.gallery1}
+                              date="15 Tháng 2  - 2024"
+                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
+                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
+                            />
+                          </SwiperSlide>
+                        </Swiper>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Section form */}
+                <div className=" bg_footer">
+                  <div className="sec_gap form_section">
+                    <FormContact />
+                  </div>
+
+                  {/* Footer */}
+                  <Footer />
+                </div>
               </div>
             </section>
           </div>

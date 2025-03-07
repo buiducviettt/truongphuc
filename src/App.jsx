@@ -14,7 +14,6 @@ function App() {
     observer.observe(document.body, { childList: true, subtree: true });
     return () => observer.disconnect();
   }, []);
-
   return (
     <Router>
       <div>

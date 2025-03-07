@@ -14,7 +14,7 @@
   font-weight: 600;
   font-size: 1.8rem;
   line-height: 1.4;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   height: 5.2rem;
   @include max(768px) {
     padding: 1rem;
@@ -47,11 +47,14 @@
 
   &.--pri {
     background-color: var(--c-pri);
-    @include affter(#8c8c8c);
+    @include affter(orange);
     @include hoverAffter;
   }
   &.--second {
-    background-color: var(--c-third);
+    @include affter(#8c8c8c);
+    @include hoverAffter;
+    background-color: transparent;
+    border: 1px solid white;
     &::after {
       background-color: var(--c-pri);
     }

@@ -1,0 +1,12 @@
+.btn_slider {
+  button {
+    padding: 2rem 2rem !important;
+  }
+  display: flex;
+  gap: 1rem;
+  .btn_prev {
+    img {
+      transform: rotate(180deg);
+    }
+  }
+}

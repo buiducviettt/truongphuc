@@ -16,8 +16,11 @@ import partner5 from '../image/logo/partner5.png';
 import partner6 from '../image/logo/partner6.png';
 import partner7 from '../image/logo/partner7.png';
 import bg from '../image/homepage/bg.png';
-
+import overlaycontact from '../image/banner/overlaycontact.png';
+import cloud from './cloud.png';
 const Images = {
+  overlaycontact,
+  cloud,
   partner1,
   partner2,
   partner3,
