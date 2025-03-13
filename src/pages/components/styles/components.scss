@@ -1,0 +1,76 @@
+@import '../../../core/font';
+$gap: 24px;
+$height: 150px;
+.home_intro_inner {
+  padding-top: 12rem;
+  .intro_content {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    .right_content {
+      display: flex;
+      gap: 80px;
+      flex-direction: column;
+    }
+    .intro_desc {
+      max-width: 700px;
+      .text-white {
+        text-align: justify;
+      }
+      .box_numbers {
+        display: flex;
+        justify-content: space-between;
+        .number_detail,
+        span {
+          background: linear-gradient(-15deg, #fff686 0%, #ffc700 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent !important;
+          font-weight: bold;
+          @include fz-72;
+        }
+      }
+    }
+    .intro_title {
+      max-width: 500px;
+      font-weight: 700;
+      .highlight_text {
+        color: var(--secondary-color);
+      }
+    }
+    .text_title {
+      @include fz-48;
+    }
+  }
+}
+.home_intro_gallery {
+  padding-top: 80px;
+
+  .slider_large {
+    img {
+      border-radius: 14px;
+      height: calc(150px + 24px + 200px);
+    }
+  }
+  .slider_grid {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+    width: 100%;
+    img {
+      border-radius: 14px;
+    }
+    .large {
+      height: $height;
+      max-height: $height;
+    }
+    .small {
+      display: grid;
+      grid-template-columns: 1fr 2fr; /* Chia thành 2 ảnh nhỏ */
+      gap: $gap;
+      height: calc($height + 2 * $gap);
+      max-height: calc($height + 2 * $gap);
+    }
+  }
+}

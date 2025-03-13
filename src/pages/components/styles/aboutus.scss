@@ -1,6 +1,8 @@
 .aboutus_page {
-  .banner {
+  .main {
     position: relative;
-    width: 100%;
+    background-image: url('../../../assets/image/aboutus/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }

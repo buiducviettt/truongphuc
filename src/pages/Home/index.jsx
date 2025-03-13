@@ -3,9 +3,7 @@
 import DefaultLayout from '../../layouts/Default Layout';
 import { useEffect, useRef, useState } from 'react';
 import '../components/styles/home.scss';
-import CountUp from 'react-countup';
 import Images from '../../assets/image/Images';
-import { useInView } from 'react-intersection-observer';
 import { getDataHome, getDataService } from '../../assets/api/api';
 import Button from '../../components/Button';
 import Typewriter from 'typewriter-effect';
@@ -22,8 +20,9 @@ import NewsCard from '../components/NewsCard';
 import Footer from '../../layouts/Default Layout/Footer';
 import FormContact from '../components/FormContact';
 import Cloud from '../../components/Cloud';
+import IntroWrapper from '../components/IntroWrapper';
+import IntroGalerry from '../components/IntroWrapper/IntroGallery';
 const Home = () => {
-  const { ref, inView } = useInView({ threshold: 0.4, triggerOnce: true });
   const swiperRef = useRef();
   const data = {
     rows: [
@@ -45,33 +44,6 @@ const Home = () => {
       },
     ],
   };
-  const slider_home = [
-    {
-      id: 1,
-      type: 'multi',
-      images: [`${Images.thumb3}`, ` ${Images.thumb4}`, ` ${Images.thumb4}`],
-    },
-    { id: 2, type: 'single', image: ` ${Images.thumb4}` },
-
-    {
-      id: 3,
-      type: 'multi',
-      images: [`${Images.thumb4}`, ` ${Images.thumb5}`, ` ${Images.thumb4}`],
-    },
-    { id: 4, type: 'single', image: ` ${Images.thumb4}` },
-
-    {
-      id: 5,
-      type: 'multi',
-      images: [`${Images.thumb4}`, ` ${Images.thumb5}`, ` ${Images.thumb4}`],
-    },
-    { id: 6, type: 'single', image: ` ${Images.thumb4}` },
-    {
-      id: 7,
-      type: 'multi',
-      images: [`${Images.thumb4}`, ` ${Images.thumb5}`, ` ${Images.thumb4}`],
-    },
-  ];
   const [dataHome, setDataHome] = useState(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [mainImage, setMainImage] = useState('');
@@ -286,105 +258,9 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="home_intro_inner">
-                    <div className="intro_content" data-aos="fade-up">
-                      <div className="intro_title">
-                        <h2 className="text-white text_title text_intro ">
-                          {dataHome.home_desc.home_desc_title}
-                        </h2>
-                      </div>
-                      <div className="intro_desc">
-                        <div className="right_content ">
-                          <p className="text-white">
-                            {dataHome.home_desc.home_desc_detail}
-                          </p>
-                          <div className="box_numbers">
-                            {highlight_number.map((number) => (
-                              <div
-                                key={number.id}
-                                className="box_number"
-                                ref={ref}
-                              >
-                                <p className={`text-white number_detail `}>
-                                  {inView && (
-                                    <CountUp
-                                      start={0}
-                                      end={
-                                        number.number === '0'
-                                          ? '24/7'
-                                          : parseFloat(number.number)
-                                      }
-                                      duration={3}
-                                      separator=","
-                                      decimalPlaces={2}
-                                    />
-                                  )}
-                                </p>
-                                <p className="text-white">{number.content}</p>
-                              </div>
-                            ))}
-                            <div className="24/7_content">
-                              <p className="box_number number_detail">24/7</p>
-                              <p className="text-white">
-                                {dataHome.special_number.content_3}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <IntroWrapper />
                 </div>
-                <div className="home_intro_gallery">
-                  <div className="swiper_container">
-                    <Swiper
-                      className="swiper swiper_gallery"
-                      spaceBetween={20}
-                      centeredSlides={true}
-                      loop={true}
-                      autoplay={{
-                        delay: 0, // Thời gian giữa mỗi slide (3s)
-                        disableOnInteraction: false, // Không dừng khi người dùng tương tác
-                      }}
-                      freeMode={true}
-                      speed={5000} // Tốc độ chuyển slide (1s)
-                      modules={[Autoplay]} // Thêm module autoplay
-                      breakpoints={{
-                        0: { slidesPerView: 1.5 }, // Mobile (0px - 767px)
-                        768: { slidesPerView: 2.5 }, // Tablet (768px - 1023px)
-                        1024: { slidesPerView: 4.5 }, // PC (>= 1024px)
-                      }}
-                    >
-                      {slider_home.map((slider) => (
-                        <SwiperSlide key={slider.id}>
-                          {/* layout ảnh lớn */}
-                          {slider.type === 'single' ? (
-                            <div className="slider_large">
-                              <img
-                                src={slider.image}
-                                alt=""
-                                className="image_large"
-                              />
-                            </div>
-                          ) : (
-                            <div className="slider_grid">
-                              {/* {slider.images.map((img, index) => (
-                              <img key={index} src={img} alt="" />
-                            ))} */}
-                              <div className="large">
-                                <img src={slider.images[0]} alt="" />
-                              </div>
-                              <div className="small">
-                                <img src={slider.images[1]} alt="" />
-                                <img src={slider.images[2]} alt="" />
-                              </div>
-                            </div>
-                          )}
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
-                </div>
+                <IntroGalerry />
                 <div className="reason_wrapper" data-aos="fade-up">
                   <Cloud />
                   <div className="container">

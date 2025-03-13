@@ -19,6 +19,11 @@
   --background-hover: rgba(255, 255, 255, 0.1);
   --transition-color: color 0.3s ease;
   --gradient-main: linear-gradient(to bottom, #014687 0%, #2e7fb0 100%);
+  --gradient-bg: linear-gradient(
+    to bottom,
+    rgba(46, 127, 176, 0),
+    rgba(12, 102, 180, 1)
+  );
 }
 * {
   box-sizing: border-box;
@@ -383,12 +388,11 @@ li {
     filter: brightness(0) saturate(100%);
   }
 }
-h2 + p {
-  margin-top: 1.6rem;
-}
-p + button {
-  margin-top: 1.6rem;
-}
+// h2 + p,
+// p + button {
+//   margin-top: 1.6rem;
+// }
+
 .is_highlight {
   color: #ffc700;
   font-weight: 700;
@@ -545,5 +549,51 @@ select {
   100% {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
+  }
+}
+// banner cho các trang trừ home
+.banner {
+  position: relative;
+  width: 100%;
+  .react-parallax-content {
+    position: absolute !important;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: var(--gradient-bg); /* Màu đen mờ */
+    z-index: 1;
+    pointer-events: none;
+  }
+  .banner_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .banner_form {
+      position: relative;
+      width: 40rem;
+      max-width: 50rem;
+      input {
+        width: 100%;
+        border-radius: 1000px;
+        padding: 1.2rem 2rem;
+      }
+      .cta_btn {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        border-radius: 1000px;
+        height: 4rem;
+        padding: 0 2rem;
+      }
+    }
   }
 }
