@@ -6,7 +6,7 @@ const FormContact = () => {
       <div className="container">
         <div className="inner">
           <div className="row">
-            <div className="col-12 col-md-6 ">
+            <div className="col col-12 col-md-6 ">
               <div className="info_header">
                 <h2 className="title text-white">
                   Thông Tin <span className="is_highlight">Của Bạn</span>
@@ -48,7 +48,10 @@ const FormContact = () => {
                     name=""
                     id=""
                   ></textarea>
-                  <div className="checkbox_wrapper d-flex">
+                  <div
+                    className="checkbox_wrapper d-flex"
+                    style={{ gap: '2rem' }}
+                  >
                     <input type="checkbox" />
                     <label className="text-white" htmlFor="">
                       Save my name, email, and website in this browser for the
@@ -59,7 +62,7 @@ const FormContact = () => {
                 <Button title="Gửi ngay" className="seemore_btn" />
               </div>
             </div>
-            <div className=" col-12 col-md-6  ">
+            <div className=" col col-12 col-md-6  ">
               <div className="right_content" style={{ gap: '1.6rem' }}>
                 <p className="text-white" style={{ paddingBottom: '2.4rem' }}>
                   Dưới nắng, những cuộn tơ ánh lên sắc vàng, sắc bạc óng ả, mềm

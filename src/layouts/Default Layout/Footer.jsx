@@ -1,4 +1,8 @@
 import Images from '../../assets/image/Images';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
+import Button from '../../components/Button';
 const Footer = () => {
   return (
     <footer className="footer">
@@ -12,11 +16,10 @@ const Footer = () => {
             <p className="title text-white" style={{ fontSize: '24px' }}>
               Nhận thông tin <span className="is_highlight">Mới Nhất</span>
             </p>
-            <input
-              type="text"
-              placeholder="Nhập email của bạn!"
-              style={{ width: '600px' }}
-            />
+            <div className="input_container">
+              <input type="text" placeholder="Nhập email của bạn!" />
+              <Button title="Gửi ngay" className="contact_btn" />
+            </div>
           </div>
         </div>
         <div className="footer_body mt-5">
@@ -74,6 +77,56 @@ const Footer = () => {
               ></iframe>
             </div>
           </div>
+          <div
+            className="footer_footer d-flex align-items-center justify-content-between"
+            style={{ marginTop: '5rem' }}
+          >
+            <div className="footer_nav d-flex" style={{ gap: '2rem' }}>
+              <Link to="/">
+                {' '}
+                <p className="is_highlight">Trang chủ</p>
+              </Link>
+              <Link to="/">
+                <p className="is_highlight">Giới thiệu</p>
+              </Link>
+              <Link to="/">
+                {' '}
+                <p className="is_highlight">Dịch vụ</p>
+              </Link>
+              <Link to="/">
+                <p className="is_highlight">Tin tức</p>
+              </Link>
+              <Link to="/">
+                {' '}
+                <p className="is_highlight">Điểm thu mua kén</p>
+              </Link>
+              <Link to="/">
+                <p className="is_highlight">Liên hệ</p>
+              </Link>
+            </div>
+            <div
+              className="footer_social d-flex align-items-center"
+              style={{ gap: '2rem' }}
+            >
+              <Link to="/">
+                <FontAwesomeIcon
+                  icon={faFacebook}
+                  size="2xl"
+                  style={{ color: '#ffc700' }}
+                />
+              </Link>
+              <Link to="/">
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  size="2xl"
+                  style={{ color: '#ffc700' }}
+                />
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="author_website text-white mt-5 text-center">
+          <p>© 2025 Truong Phuc Company• Supported development by Đức Việt</p>
         </div>
       </div>
     </footer>

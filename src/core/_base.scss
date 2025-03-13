@@ -12,7 +12,11 @@ html {
     font-size: 70%;
   }
 }
-
+html,
+body {
+  overflow-x: hidden; /* Chặn cuộn ngang */
+  width: 100vw; /* Giữ nguyên kích thước màn hình */
+}
 body {
   font-family: var(--font-pri);
   font-size: 18px;

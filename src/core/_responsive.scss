@@ -1,0 +1,187 @@
+@import './mixin';
+@import './variable';
+// Mobile 768px
+@include max($mobile) {
+  .main {
+    padding-top: 6rem !important;
+    transition: padding-top 0.3s ease-in-out;
+    /* Khi header thu nhỏ */
+    .header.scrolled + main {
+      padding-top: 4rem !important; /* Giữ khoảng cách khi header thu nhỏ */
+    }
+  }
+  .sec_gap {
+    padding: 2.5rem 0 !important;
+  }
+  header {
+    height: 6rem !important;
+    max-height: 6rem;
+    &.scrolled {
+      height: 4rem !important;
+    }
+    .header_wrapper {
+      display: none;
+    }
+  }
+  //Homepage
+  .homepage {
+    .home_wrapper {
+      .home_inner {
+        .partner_section {
+          .logo_img {
+            width: 100px !important;
+            max-width: 100px;
+            height: 100px !important;
+            max-height: 100px;
+          }
+        }
+        .home_intro_gallery {
+          padding-top: 5rem !important;
+        }
+        .home_banner {
+          background-attachment: scroll; // Tránh lỗi trên mobile
+
+          &::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; /* Đảm bảo full chiều ngang */
+            height: 100vh; /* Đảm bảo full chiều cao */
+            background-image: inherit;
+            background-size: cover; /* Đảm bảo ảnh luôn cover toàn bộ */
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -1;
+          }
+        }
+        .banner_gallery {
+          right: auto !important;
+          top: auto !important;
+          bottom: 5%;
+          .img_wrapper {
+            width: 7rem !important;
+            max-width: 7rem;
+            height: 7rem !important;
+            max-height: 7rem;
+          }
+        }
+        .home_intro {
+          .substract_wrapper {
+            .subtract {
+              top: -1.5rem !important;
+            }
+          }
+          .home_intro_wrapper {
+            .home_intro_inner {
+              padding-top: 5rem;
+              .intro_content {
+                flex-direction: column;
+                .intro_desc {
+                  .right_content {
+                    gap: 0;
+                    .box_numbers {
+                      display: block;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .reason_wrapper {
+          padding: 5rem 0 !important;
+          .reason_header {
+            flex-direction: column;
+            align-items: flex-start !important;
+          }
+        }
+        .services_section {
+          .service_body {
+            padding-top: 2rem;
+            .services_list {
+              .service_info {
+                padding-bottom: 2rem;
+              }
+              .swiper {
+                overflow: visible;
+                margin-left: 0;
+                margin-right: 0;
+              }
+              .service_img {
+                width: 100% !important;
+              }
+              gap: 5rem;
+            }
+          }
+        }
+        .news_section {
+          .news_header {
+            display: block !important;
+          }
+          .news_cta {
+            gap: 0 !important;
+            .btn_slider {
+              display: none;
+            }
+          }
+        }
+        .review_section {
+          .inner {
+            gap: 5rem !important;
+          }
+        }
+        .form_section {
+          .form_contact {
+            .inner {
+              padding: 2rem;
+            }
+            .form_list {
+              gap: 2rem !important;
+              .form_header {
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+              }
+            }
+          }
+        }
+        .footer {
+          .footer_footer {
+            .footer_nav {
+              display: none !important;
+            }
+            .footer_social {
+              margin: 0 auto;
+            }
+          }
+
+          .footer_header {
+            display: block;
+            .footer_form {
+              .input_container {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: flex-start !important;
+
+                .contact_btn {
+                  position: static;
+                  transform: none;
+                }
+              }
+            }
+          }
+          .footer_body {
+            .inner {
+              display: block !important;
+              iframe {
+                width: 400px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

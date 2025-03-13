@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getMenu } from '../../assets/api/api';
 import Button from '../../components/Button';
+import MobileHeader from './MobileHeader';
 const Header = () => {
   const [menu, setMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+
   //gọi api
   useEffect(() => {
     const fetchMenu = async () => {
@@ -27,14 +29,18 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  if (!menu) return <p>Loading...</p>;
+  if (!menu) return null;
   return (
-    <header className="header">
-      <div className="header_wrapper container">
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+      {/* Desktop Menu */}
+      <div className="header_wrapper container ">
         <div className={`header_inner ${isScrolled ? 'scrolled' : ''}`}>
           <div className={`header_logo ${isScrolled ? 'scrolled' : ''}`}>
-            <img src={Images.logo} alt="" />
+            <Link to="/">
+              <img src={Images.logo} alt="" />
+            </Link>
           </div>
+
           <div className="navbar_wrapper">
             <ul className="navbar_menu">
               {menu.map((item) => (
@@ -63,9 +69,12 @@ const Header = () => {
               ))}
             </ul>
           </div>
+
           <Button title="Liên hệ" className="btn_header" />
         </div>
       </div>
+      {/* {MobileMenu} */}
+      <MobileHeader menu={menu} />
     </header>
   );
 };

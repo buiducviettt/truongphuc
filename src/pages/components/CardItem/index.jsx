@@ -5,7 +5,9 @@ const CardItem = ({ icon, title, desc, img }) => {
       <div className="image_wrapper">
         <img src={img} alt="" className="img_bg" />
         <div className="card_content">
-          <img src={icon} alt={title} className="icon" />
+          <div className="icon">
+            <img src={icon} alt={title} className="icon_img" />
+          </div>
           <h3 className="text-white">{title}</h3>
           <p className="text-white">{desc}</p>
         </div>
