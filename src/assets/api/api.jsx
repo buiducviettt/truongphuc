@@ -25,6 +25,25 @@ export const getDataService = async () => {
     return [];
   }
 };
+// lấy chi tiết dịch vụ
+export const getDataServiceDetails = async (id) => {
+  try {
+    const response = await API.get(`wp/v2/service/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+// export data Intro
+export const getDataIntro = async () => {
+  try {
+    const response = await API.get('acf/v3/pages/2');
+    return response.data.acf;
+  } catch (error) {
+    console.log(error);
+  }
+};
 // show menu
 export const getMenu = async () => {
   try {

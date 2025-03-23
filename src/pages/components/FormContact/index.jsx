@@ -1,5 +1,4 @@
 import Button from '../../../components/Button';
-
 const FormContact = () => {
   return (
     <div className="form_contact">

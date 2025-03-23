@@ -31,12 +31,20 @@ const IntroWrapper = () => {
   ];
   return (
     <div className="home_intro_inner">
+      <div className="bird_animation">
+        <div className=" bird bird_1"></div>
+        <div className=" bird bird_2"></div>
+        <div className=" bird bird_3"></div>
+        <div className="bird bird_4"></div>
+        <div className=" bird bird_5"></div>
+      </div>
       <div className="intro_content" data-aos="fade-up">
         <div className="intro_title">
           <h2 className="text-white text_title text_intro ">
             {dataHome.home_desc.home_desc_title}
           </h2>
         </div>
+
         <div className="intro_desc">
           <div className="right_content ">
             <p className="text-white">{dataHome.home_desc.home_desc_detail}</p>

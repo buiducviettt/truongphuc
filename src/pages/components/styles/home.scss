@@ -103,70 +103,9 @@
           background-image: url('../../../assets/image/homepage/bg.png') !important;
           background-size: cover;
           background-repeat: no-repeat;
-          .reason_wrapper {
-            position: relative;
-            padding: 12rem 0;
-            .reason_header {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            }
-          }
         }
       }
-      .card_item {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        .overlay {
-          border-radius: 8px;
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-image: linear-gradient(
-            to bottom,
-            #09193500 0%,
-            rgba(9, 25, 53, 0.5) 100%
-          );
-          z-index: 1;
-        } /* Điều chỉnh kích thước theo ý muốn */
-        .image_wrapper {
-          border-radius: 8px !important;
-          position: relative;
-          width: 100%;
-          aspect-ratio: 1/1; /* Giữ hình vuông */
-          overflow: hidden;
-          .card_content {
-            z-index: 2;
-            position: absolute;
-            top: 50%;
-            padding: 2.4rem;
-            /* Tạo lớp nền mờ */
-            .icon {
-              width: 40px;
-              max-width: 40px;
-              height: 40px;
-              max-height: 40px;
-            }
-          }
-        }
-      }
-      .partner_section {
-        .inner {
-          .logo_partner {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 cột */
-            grid-template-rows: repeat(2, auto); /* 2 hàng */
-            gap: 20px; /* Khoảng cách giữa các logo */
-          }
-          .logo_img {
-            width: 150px;
-            max-width: 150px;
-            height: 150px;
-            max-height: 150px;
-          }
-        }
-      }
+
       .services_section {
         position: relative;
 

@@ -17,8 +17,14 @@ import partner6 from '../image/logo/partner6.png';
 import partner7 from '../image/logo/partner7.png';
 import bg from '../image/homepage/bg.png';
 import overlaycontact from '../image/banner/overlaycontact.png';
+import icon1 from '../image/aboutus/icon1.png';
+import circledot from '../image/aboutus/circledot.png';
+import respect1 from '../image/aboutus/respect1.png';
 import cloud from './cloud.png';
 const Images = {
+  respect1,
+  circledot,
+  icon1,
   overlaycontact,
   cloud,
   partner1,

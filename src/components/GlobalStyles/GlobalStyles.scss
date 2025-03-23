@@ -25,6 +25,9 @@
     rgba(12, 102, 180, 1)
   );
 }
+.sec_second_gap {
+  padding-top: 5rem;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -461,7 +464,7 @@ select {
   padding-top: 30%;
   border-radius: 50%;
   overflow: hidden;
-  z-index: 1;
+  z-index: 0;
   opacity: 1;
   .bird {
     position: absolute;
@@ -478,7 +481,8 @@ select {
       50% 100%,
       25% 60%
     );
-    animation: fly 6s linear infinite, flap 0.2s ease-in-out infinite alternate;
+    animation: fly 6.5s linear infinite,
+      flap 0.2s ease-in-out infinite alternate;
   }
 
   .bird_1 {
@@ -486,11 +490,11 @@ select {
     animation-delay: 0s;
   }
   .bird_2 {
-    left: 30%;
+    left: 20%;
     animation-delay: 0.5s;
   }
   .bird_3 {
-    left: 30%;
+    left: 50%;
     animation-delay: 1s;
   }
   .bird_4 {

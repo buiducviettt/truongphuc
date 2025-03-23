@@ -1,3 +1,4 @@
+import '../styles/components.scss';
 const CardItem = ({ icon, title, desc, img }) => {
   return (
     <div className="card_item">
@@ -8,8 +9,11 @@ const CardItem = ({ icon, title, desc, img }) => {
           <div className="icon">
             <img src={icon} alt={title} className="icon_img" />
           </div>
-          <h3 className="text-white">{title}</h3>
-          <p className="text-white">{desc}</p>
+          <h3 className="text-white title">{title}</h3>
+          <p
+            className="text-white"
+            dangerouslySetInnerHTML={{ __html: desc }}
+          ></p>
         </div>
       </div>
     </div>

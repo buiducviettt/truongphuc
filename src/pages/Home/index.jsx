@@ -22,6 +22,8 @@ import FormContact from '../components/FormContact';
 import Cloud from '../../components/Cloud';
 import IntroWrapper from '../components/IntroWrapper';
 import IntroGalerry from '../components/IntroWrapper/IntroGallery';
+import ReasonWrapper from '../components/Reasons';
+import Partner from '../../components/Partner';
 const Home = () => {
   const swiperRef = useRef();
   const data = {
@@ -78,7 +80,6 @@ const Home = () => {
       const data = await getDataService();
       if (data) {
         setDataService(data);
-        console.log(data);
       }
     };
     fetchService();
@@ -86,7 +87,6 @@ const Home = () => {
 
   if (!dataHome) return null;
   if (!dataService) return null;
-
   const highlight_number = [
     {
       number: dataHome.special_number.highlight_number_1,
@@ -149,13 +149,7 @@ const Home = () => {
                   {/* Section dịch vụ */}
                   <div className="sec_gap services_section">
                     <Cloud />
-                    <div className="bird_animation">
-                      <div className=" bird bird_1"></div>
-                      <div className=" bird bird_2"></div>
-                      <div className=" bird bird_3"></div>
-                      <div className="bird bird_4"></div>
-                      <div className=" bird bird_5"></div>
-                    </div>
+
                     <div className="container">
                       <div className="inner">
                         <div
@@ -261,137 +255,8 @@ const Home = () => {
                   <IntroWrapper />
                 </div>
                 <IntroGalerry />
-                <div className="reason_wrapper" data-aos="fade-up">
-                  <Cloud />
-                  <div className="container">
-                    <div className="reason_wrapper_inner">
-                      <div className="reason_header">
-                        <h2 className="reason_title text-white">
-                          <Typewriter
-                            options={{
-                              strings: ['Vì sao nên chọn NamBanSilk'],
-                              autoStart: true,
-                              loop: true,
-                              delay: 100,
-                              deleteSpeed: Infinity,
-                            }}
-                          />
-                        </h2>
-                        <div className="btn_cta">
-                          <Button title="Xem thêm" className="seemore_btn" />
-                        </div>
-                      </div>
-                      <div className="reason_body pt-5" data-aos="fade-up">
-                        {isMobile ? (
-                          <Swiper
-                            centeredSlides={true}
-                            loop={true}
-                            speed={5000} // Tốc độ cuộn (5s)
-                            autoplay={{
-                              delay: 3000, // Dừng 3s mỗi slide
-                              disableOnInteraction: false, // Không dừng khi user tương tác
-                            }}
-                            modules={[Autoplay, Pagination]} // Fix lỗi module
-                            slidesPerView={1}
-                            pagination={{ clickable: true }}
-                          >
-                            {dataHome.reason_home.map((reason, index) => (
-                              <SwiperSlide key={index}>
-                                <CardItem
-                                  img={reason.img?.url}
-                                  title={reason.title}
-                                  desc={reason.short_desc}
-                                  icon={reason.icon.url}
-                                />
-                              </SwiperSlide>
-                            ))}
-                          </Swiper>
-                        ) : (
-                          <div className="row">
-                            {dataHome.reason_home.map((reason, index) => (
-                              <div key={index} className="col col-12 col-md-4">
-                                <CardItem
-                                  img={reason.img?.url}
-                                  title={reason.title}
-                                  desc={reason.short_desc}
-                                  icon={reason.icon.url}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="partner_section" data-aos="fade-up">
-                  <div className="inner">
-                    <Swiper
-                      breakpoints={{
-                        0: {
-                          slidesPerView: '3',
-                        },
-                        768: {
-                          slidesPerView: '4',
-                        },
-                        1024: {
-                          slidesPerView: '5',
-                        },
-                      }}
-                      className="row_1"
-                      spaceBetween={24}
-                      loop={true}
-                      autoplay={{
-                        delay: 0, // Thời gian giữa mỗi slide (3s)
-                        disableOnInteraction: false, // Không dừng khi người dùng tương tác
-                      }}
-                      freeMode={true}
-                      speed={5000} // Tốc độ chuyển slide (1s)
-                      modules={[Autoplay]}
-                    >
-                      {dataHome?.partner?.map((img, index) => (
-                        <SwiperSlide key={index}>
-                          <div className="logo_img">
-                            <img src={img.sizes?.thumbnail || img.url} alt="" />
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                    <Swiper
-                      breakpoints={{
-                        0: {
-                          slidesPerView: '3',
-                        },
-                        768: {
-                          slidesPerView: '4',
-                        },
-                        1024: {
-                          slidesPerView: '5',
-                        },
-                      }}
-                      spaceBetween={24}
-                      loop={true}
-                      autoplay={{
-                        delay: 0, // Thời gian giữa mỗi slide (3s)
-                        disableOnInteraction: false, // Không dừng khi người dùng tương tác
-                      }}
-                      freeMode={true}
-                      speed={5000} // Tốc độ chuyển slide (1s)
-                      modules={[Autoplay]}
-                      className="row_2"
-                      dir="rtl"
-                    >
-                      {' '}
-                      {dataHome?.partner?.map((img, index) => (
-                        <SwiperSlide key={index}>
-                          <div className="logo_img">
-                            <img src={img.sizes?.thumbnail || img.url} alt="" />
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  </div>
-                </div>
+                <ReasonWrapper />
+                <Partner />
 
                 {/* Section FAQ */}
                 <div className="sec_gap faq_section" data-aos="fade-up">

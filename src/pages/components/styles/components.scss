@@ -2,11 +2,11 @@
 $gap: 24px;
 $height: 150px;
 .home_intro_inner {
+  position: relative;
   padding-top: 12rem;
   .intro_content {
     display: flex;
     flex-direction: row;
-
     justify-content: space-between;
     .right_content {
       display: flex;
@@ -71,6 +71,211 @@ $height: 150px;
       gap: $gap;
       height: calc($height + 2 * $gap);
       max-height: calc($height + 2 * $gap);
+    }
+  }
+}
+.circle_small {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  padding: 1rem;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border: 0.2rem dashed var(--secondary-color);
+    border-radius: 50%;
+    -webkit-transition: 0.3s linear;
+    transition: 0.3s linear;
+  }
+
+  .inner {
+    background: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    .color_wrapper {
+      width: 100%;
+      height: 100%;
+      background: var(--secondary-color);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+.circle_large {
+  width: 100%;
+  max-width: 22rem;
+  height: 100%;
+  max-height: 22rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 1rem;
+  .inner {
+    border-radius: 50%;
+    height: 100%;
+    background: var(--secondary-color);
+  }
+  .color_wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.reason_wrapper {
+  position: relative;
+  padding: 12rem 0;
+  .reason_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.box_intro {
+  .inner {
+    padding: 1.6rem;
+    h1 {
+      font-weight: 700;
+    }
+  }
+  position: relative;
+
+  &::before {
+    border-top-left-radius: 8px;
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+    border-top: 3px solid var(--secondary-color);
+    border-left: 3px solid var(--secondary-color);
+    animation: moveBorder 8s linear infinite;
+  }
+
+  /* Góc dưới bên phải */
+  &::after {
+    border-bottom-right-radius: 8px;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    border-bottom: 3px solid var(--secondary-color);
+    border-right: 3px solid var(--secondary-color);
+    animation: moveBorder 8s linear infinite reverse;
+  }
+  .logo {
+    margin-left: auto;
+    width: 100%;
+    height: 100%;
+    max-width: 72px;
+    max-height: 72px;
+  }
+  transition: all 0.3s ease-in;
+  &:hover {
+    .logo {
+      filter: brightness(0) saturate(100%);
+    }
+    .inner p,
+    .inner h1 {
+      color: black !important;
+    }
+    background: var(--secondary-color);
+    border-radius: 8px;
+  }
+}
+@keyframes moveBorder {
+  0% {
+    width: 60px;
+    height: 0;
+  }
+  25% {
+    width: 60px;
+    height: 60px;
+  }
+  50% {
+    width: 0;
+    height: 60px;
+  }
+  75% {
+    width: 60px;
+    height: 60px;
+  }
+  100% {
+    width: 60px;
+    height: 0;
+  }
+}
+.partner_section {
+  .inner {
+    .logo_partner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* 5 cột */
+      grid-template-rows: repeat(2, auto); /* 2 hàng */
+      gap: 20px; /* Khoảng cách giữa các logo */
+    }
+    .logo_img {
+      width: 150px;
+      max-width: 150px;
+      height: 150px;
+      max-height: 150px;
+    }
+  }
+}
+.card_item {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  .overlay {
+    border-radius: 8px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+      to bottom,
+      #09193500 0%,
+      rgba(9, 25, 53, 0.5) 100%
+    );
+    z-index: 1;
+  } /* Điều chỉnh kích thước theo ý muốn */
+  .image_wrapper {
+    border-radius: 8px !important;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1; /* Giữ hình vuông */
+    overflow: hidden;
+    .card_content {
+      max-height: 100%;
+      z-index: 2;
+      position: absolute;
+      top: 50%;
+      padding: 2.4rem;
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Giới hạn 3 dòng, có thể thay đổi */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Tạo lớp nền mờ */
+      .icon {
+        width: 40px;
+        max-width: 40px;
+        height: 40px;
+        max-height: 40px;
+      }
     }
   }
 }
