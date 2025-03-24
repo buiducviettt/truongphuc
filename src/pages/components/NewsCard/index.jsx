@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-const NewsCard = ({ image, date, title, desc }) => {
+const NewsCard = ({ image, date, title, desc, onCLick }) => {
   return (
-    <div className="news_card">
+    <div className="news_card" style={{ cursor: 'pointer' }} onClick={onCLick}>
       <div className="inner">
         <div className="card_img">
           <img src={image} alt="" />
@@ -10,7 +10,6 @@ const NewsCard = ({ image, date, title, desc }) => {
         <p
           className="title"
           style={{
-            fontSize: '2rem',
             fontWeight: '700',
             textTransform: 'uppercase',
           }}

@@ -5,6 +5,26 @@ const API = axios.create({
     'Content-Type': 'application/json',
   },
 });
+//lấy nội dung bài viết
+export const getDataPost = async () => {
+  try {
+    const response = await API.get('wp/v2/posts');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+// lấy chi tiết bài viết
+export const getDetailPost = async (id) => {
+  try {
+    const response = await API.get(`wp/v2/posts/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 // lấy nội dung HOME từ wordpress
 export const getDataHome = async () => {
   try {

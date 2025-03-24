@@ -2,7 +2,14 @@ import Homepage from '../pages/Home';
 import Introduction from '../pages/Introduction';
 import Service from '../pages/Service';
 import ServiceDetails from '../pages/ServiceDetails';
+import News from '../pages/News';
+import NewsDetail from '../pages/News/NewsDetail';
 export const publicRoutes = [
+  {
+    path: '/news/:id',
+    component: NewsDetail,
+  },
+  { path: '/news', component: News },
   {
     path: '/',
     component: Homepage,

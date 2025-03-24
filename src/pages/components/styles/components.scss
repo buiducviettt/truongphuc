@@ -279,3 +279,30 @@ $height: 150px;
     }
   }
 }
+.news_section {
+  .news_body {
+    padding-top: 4rem;
+    .title {
+      transition: color 0.3s ease-in;
+      &:hover {
+        color: var(--secondary-color);
+      }
+    }
+
+    .news_card {
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: #fff;
+      .inner {
+        .card_img {
+          width: 100%;
+          height: 350px;
+          padding-bottom: 8px;
+        }
+        img {
+          border-radius: 12px;
+        }
+      }
+    }
+  }
+}
