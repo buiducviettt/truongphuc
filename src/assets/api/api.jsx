@@ -5,6 +5,16 @@ const API = axios.create({
     'Content-Type': 'application/json',
   },
 });
+// lấy các địa điểm thu mua kén
+export const getLocation = async () => {
+  try {
+    const response = await API.get('wp/v2/dia_diem');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
 //lấy nội dung bài viết
 export const getDataPost = async () => {
   try {

@@ -4,7 +4,9 @@ import Service from '../pages/Service';
 import ServiceDetails from '../pages/ServiceDetails';
 import News from '../pages/News';
 import NewsDetail from '../pages/News/NewsDetail';
+import Store from '../pages/Store';
 export const publicRoutes = [
+  { path: '/store', component: Store },
   {
     path: '/news/:id',
     component: NewsDetail,

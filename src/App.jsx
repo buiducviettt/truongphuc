@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes';
 import { useEffect } from 'react';
-
 function App() {
   useEffect(() => {
     const observer = new MutationObserver(() => {

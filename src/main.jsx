@@ -6,6 +6,7 @@ import Lenis from '@studio-freight/lenis';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import ScrollToTop from 'react-scroll-to-top';
+
 const lenis = new Lenis({
   duration: 1.2, // Tốc độ cuộn
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Hiệu ứng easing

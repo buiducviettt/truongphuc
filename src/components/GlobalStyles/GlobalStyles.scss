@@ -149,6 +149,7 @@ li {
       }
 
       .header_logo {
+        width: 10rem;
         img {
           transition: all 0.5s ease;
         }
@@ -190,7 +191,7 @@ li {
       position: relative;
     }
     .logo_mobile_header {
-      max-width: 100px;
+      max-width: 5rem;
       display: flex;
       justify-content: center; /* Canh giữa */
       align-items: center; /* Canh giữa */

@@ -1,4 +1,4 @@
-import logo from '../image/logo/logo.svg';
+import logo from '../image/logo/logo.png';
 import arrow from '../image/icons/arrow.svg';
 import bannerhome from '../image/banner/homebanner.png';
 import thumb3 from '../image/banner/thumb3.jpg';
