@@ -119,6 +119,13 @@
             flex-direction: column;
             gap: 2.4rem;
             .service_info_wrapper {
+              .service_info {
+                .inner {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 2.4rem;
+                }
+              }
               display: flex;
               flex-direction: column;
               align-items: center;
@@ -137,6 +144,11 @@
         }
       }
       .faq_section {
+        .faq_title {
+          display: flex;
+          flex-direction: column;
+          gap: 2.4rem;
+        }
         .faq-row-wrapper {
           background: transparent !important;
 

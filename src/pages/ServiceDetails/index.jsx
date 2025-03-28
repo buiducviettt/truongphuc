@@ -54,7 +54,11 @@ const ServiceDetails = () => {
               </div>
             </section>
             <div className="sec_second_gap contact_button d-flex justify-content-center">
-              <Button className="btn --pri seemore_btn " title="Liên hệ" />
+              <Button
+                className="btn --pri seemore_btn "
+                title="Liên hệ"
+                link="http://truongphucglobal.com.vn/contact/"
+              />
             </div>
           </div>
           <section className=" bg_footer">

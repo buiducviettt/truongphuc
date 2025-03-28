@@ -5,6 +5,13 @@ const API = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+// lấy contact form CF7
+
+export const formDataEncoded = async () => {
+  const response = await API.get('contact-form-7/v1/contact-forms/');
+  return response.data;
+};
 // lấy các địa điểm thu mua kén
 export const getLocation = async () => {
   try {
@@ -78,6 +85,16 @@ export const getDataIntro = async () => {
 export const getMenu = async () => {
   try {
     const response = await API.get('menus/v1/menus/3');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+//show footer
+export const getFooter = async () => {
+  try {
+    const response = await API.get('menus/v1/menus/9');
     return response.data;
   } catch (error) {
     console.log(error);

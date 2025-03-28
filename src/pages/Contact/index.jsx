@@ -3,6 +3,7 @@ import Banner from '../components/Banner';
 import '../../pages/components/styles/contact.scss';
 import FormContact from '../components/FormContact';
 import Footer from '../../layouts/Default Layout/Footer';
+import ContactCard from '../components/ContactCard';
 const Contact = () => {
   return (
     <DefaultLayout>
@@ -24,7 +25,36 @@ const Contact = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
-              <div className="sec_gap contact_info_lists"></div>
+              <ul className="sec_gap contact_info_lists">
+                <li className="contact_info_list">
+                  <ContactCard
+                    title="Tư vấn dịch vụ"
+                    desc="Speak to our friendly team."
+                    info="support@untitledui.com"
+                  />
+                </li>
+                <li className="contact_info_list">
+                  <ContactCard
+                    title="Tư vấn dịch vụ"
+                    desc="Speak to our friendly team."
+                    info="support@untitledui.com"
+                  />
+                </li>
+                <li className="contact_info_list">
+                  <ContactCard
+                    title="Tư vấn dịch vụ"
+                    desc="Speak to our friendly team."
+                    info="support@untitledui.com"
+                  />
+                </li>
+                <li className="contact_info_list">
+                  <ContactCard
+                    title="Tư vấn dịch vụ"
+                    desc="Speak to our friendly team."
+                    info="support@untitledui.com"
+                  />
+                </li>
+              </ul>
             </div>
           </div>
           <section className=" bg_footer">

@@ -1,8 +1,29 @@
+@import '../../../core/font';
 .contact_page {
   .main {
     position: relative;
     background-image: url('../../../assets/image/aboutus/bg.png');
     background-size: cover;
     background-repeat: no-repeat;
+  }
+  .contact_info_lists {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.4rem;
+  }
+}
+.contact_card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2.4rem;
+  .inner {
+    .info_title {
+      font-weight: 700;
+      @include fz-24;
+    }
+    .info_detail {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
   }
 }

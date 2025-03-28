@@ -78,11 +78,11 @@ li {
   z-index: 999;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 2.4rem 0;
+  padding: 1rem 0;
   transition: all 0.5s ease;
   &.scrolled {
-    height: 8rem;
-    padding: 1.4rem 0;
+    height: 9rem;
+    // padding: 1.4rem 0;
   }
   .header_wrapper {
     .header_inner {

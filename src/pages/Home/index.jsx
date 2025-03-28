@@ -4,7 +4,7 @@ import DefaultLayout from '../../layouts/Default Layout';
 import { useEffect, useRef, useState } from 'react';
 import '../components/styles/home.scss';
 import Images from '../../assets/image/Images';
-import { getDataHome, getDataService } from '../../assets/api/api';
+import { getDataHome, getDataService, getDataPost } from '../../assets/api/api';
 import Button from '../../components/Button';
 import Typewriter from 'typewriter-effect';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,7 +24,9 @@ import IntroWrapper from '../components/IntroWrapper';
 import IntroGalerry from '../components/IntroWrapper/IntroGallery';
 import ReasonWrapper from '../components/Reasons';
 import Partner from '../../components/Partner';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate();
   const swiperRef = useRef();
   const data = {
     rows: [
@@ -50,6 +52,8 @@ const Home = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [mainImage, setMainImage] = useState('');
   const [dataService, setDataService] = useState(null);
+  const [dataPost, setDataPost] = useState([]);
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -59,6 +63,16 @@ const Home = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  useEffect(() => {
+    const fetchDataPost = async () => {
+      const data = await getDataPost();
+      if (data) {
+        setDataPost(data);
+      }
+    };
+    fetchDataPost();
+  }, []);
+
   useEffect(() => {
     // 1️⃣ Fetch data trước để đảm bảo có dữ liệu trước khi dùng
     const fetchData = async () => {
@@ -87,6 +101,7 @@ const Home = () => {
 
   if (!dataHome) return null;
   if (!dataService) return null;
+  if (!dataPost) return null;
   const highlight_number = [
     {
       number: dataHome.special_number.highlight_number_1,
@@ -98,6 +113,9 @@ const Home = () => {
     },
   ];
 
+  const handleNavigation = (id) => {
+    navigate(`/news/${id}`);
+  };
   return (
     <DefaultLayout>
       <div className="homepage">
@@ -264,18 +282,20 @@ const Home = () => {
                     <div className="inner">
                       <div className="row">
                         <div className="col col-12 col-md-6">
-                          <h2 className="title text-white">
-                            Có câu hỏi? <br></br>
-                            <span className="is_highlight">
-                              {' '}
-                              Chúng tôi sẵn sàng trả lời!
-                            </span>
-                          </h2>
-                          <p className="desc text-white">
-                            Everything you need to know about the product and
-                            billing.
-                          </p>
-                          <Button title="Liên hệ" className="contact_btn" />
+                          <div className="faq_title">
+                            <h2 className="title text-white">
+                              Có câu hỏi? <br></br>
+                              <span className="is_highlight">
+                                {' '}
+                                Chúng tôi sẵn sàng trả lời!
+                              </span>
+                            </h2>
+                            <p className="desc text-white">
+                              Everything you need to know about the product and
+                              billing.
+                            </p>
+                            <Button title="Liên hệ" className="contact_btn" />
+                          </div>
                         </div>
                         <div className="col col-12 col-md-6">
                           <Faq className="faq_table" data={data} />
@@ -362,54 +382,20 @@ const Home = () => {
                           loop={true}
                           onSwiper={(swiper) => (swiperRef.current = swiper)}
                         >
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
-                          <SwiperSlide>
-                            <NewsCard
-                              image={Images.gallery1}
-                              date="15 Tháng 2  - 2024"
-                              title="Giấy tờ pháp lý cần thiết trước khi thuê văn phòng"
-                              desc="We manufacture in seven countries and ship to over 50, which means we’re uniquel"
-                            />
-                          </SwiperSlide>
+                          {dataPost.slice(0, 5).map((post, index) => (
+                            <SwiperSlide key={index}>
+                              <NewsCard
+                                onCLick={() => {
+                                  handleNavigation(post.id);
+                                }}
+                                key={index}
+                                image={post.acf?.thumb_img?.url}
+                                date={post.date}
+                                title={post.title?.rendered}
+                                desc={post.acf?.short_description}
+                              />
+                            </SwiperSlide>
+                          ))}
                         </Swiper>
                       </div>
                     </div>

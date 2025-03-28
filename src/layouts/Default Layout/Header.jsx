@@ -40,7 +40,6 @@ const Header = () => {
               <img src={Images.logo} alt="" />
             </Link>
           </div>
-
           <div className="navbar_wrapper">
             <ul className="navbar_menu">
               {menu.map((item) => (
@@ -69,8 +68,11 @@ const Header = () => {
               ))}
             </ul>
           </div>
-
-          <Button title="Liên hệ" className="btn_header" />
+          <Button
+            title="Liên hệ"
+            className="btn_header"
+            link="http://truongphucglobal.com.vn/contact/"
+          />
         </div>
       </div>
       {/* {MobileMenu} */}

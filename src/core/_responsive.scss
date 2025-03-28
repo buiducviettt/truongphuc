@@ -229,4 +229,58 @@
       }
     }
   }
+  .contact_page {
+    .contact_info_lists {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
+  }
+}
+@include min-max($mobile, $tablet) {
+  .sec_gap {
+    padding: 5rem 0 !important;
+  }
+  .header_wrapper {
+    display: none;
+  }
+  .banner_gallery {
+    left: 0 !important;
+    margin-top: 2.4rem;
+    .img_wrapper {
+      width: 15rem !important;
+      height: 15rem !important;
+    }
+  }
+  .home_intro {
+    .substract_wrapper {
+      .subtract {
+        top: -2rem !important;
+      }
+    }
+  }
+  .home_intro_inner {
+    .intro_content {
+      display: flex !important;
+      flex-direction: column;
+    }
+  }
+  .footer_header {
+    flex-direction: column;
+    .footer_logo {
+      width: 20%;
+    }
+  }
+  .reason_wrapper {
+    .card_item {
+      .card_content {
+        top: 30% !important;
+      }
+    }
+  }
+  .contact_page {
+    .contact_info_lists {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  }
 }
