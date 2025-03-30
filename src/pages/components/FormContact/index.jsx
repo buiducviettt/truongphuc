@@ -1,6 +1,11 @@
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
 import Button from '../../../components/Button';
+import ReCAPTCHA from 'react-google-recaptcha';
+emailjs.init('sVYhiGYBPjVEO500Z'); // Sử dụng Public Key
 const FormContact = () => {
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [captchaValue, setCaptchaValue] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,8 +26,34 @@ const FormContact = () => {
       }));
     }
   };
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Cấu hình dữ liệu để gửi vào template
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    // Gửi email qua EmailJS
+    emailjs
+      .send(
+        'service_j82miru', // Service ID của bạn
+        'template_0f0ggfm', // Template ID của bạn
+        templateParams, // Dữ liệu người dùng từ form
+        'sVYhiGYBPjVEO500Z', // Public Key của bạn
+      )
+      .then(
+        (result) => {
+          console.log('Email sent successfully', result.text);
+        },
+        (error) => {
+          console.error('Error sending email:', error.text);
+        },
+      );
     // Thực hiện gửi dữ liệu (có thể qua API hoặc phương thức nào đó)
     console.log('Form submitted:', formData);
 
@@ -33,10 +64,16 @@ const FormContact = () => {
       message: '',
       saveInfo: false,
     });
-    setResponse('Form has been submitted');
+    const isFormValid = formData.name && formData.email && formData.message; // Kiểm tra xem form có đầy đủ dữ liệu hay không
+
+    if (isFormValid) {
+      // Giả sử gửi email thành công
+      setSubmitStatus('success');
+    } else {
+      // Nếu có lỗi khi gửi form
+      setSubmitStatus('error');
+    }
   };
-  const [response, setResponse] = useState('');
-  const [isSubmit, setIsSubmit] = useState(false);
 
   return (
     <div className="form_contact">
@@ -120,12 +157,27 @@ const FormContact = () => {
                     </label>
                   </div>
                 </div>
+                {/* Thêm reCAPTCHA */}
+                <ReCAPTCHA
+                  sitekey="6LeABwQrAAAAANkIfZ6aM-HidpVSLDDRtMvfHZc7" // Thay thế bằng site key của bạn
+                  onChange={handleCaptchaChange} // Hàm xử lý khi người dùng hoàn thành CAPTCHA
+                />
                 <Button
                   title="Gửi ngay"
                   className="seemore_btn"
                   type="submit"
                 />
-                {response && <p>Hello</p>}
+                {/* Thông báo khi gửi form */}
+                {submitStatus === 'success' && (
+                  <p style={{ color: 'green' }}>
+                    Your message has been sent successfully!
+                  </p>
+                )}
+                {submitStatus === 'error' && (
+                  <p style={{ color: 'red' }}>
+                    Please fill in all fields before submitting.
+                  </p>
+                )}
               </form>
             </div>
             <div className=" col col-12 col-md-6  ">
