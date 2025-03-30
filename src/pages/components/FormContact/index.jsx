@@ -56,7 +56,11 @@ const FormContact = () => {
       );
     // Thực hiện gửi dữ liệu (có thể qua API hoặc phương thức nào đó)
     console.log('Form submitted:', formData);
-
+    // Kiểm tra xem captcha có được hoàn thành chưa
+    if (!captchaValue) {
+      setSubmitStatus('error');
+      return;
+    }
     // Reset form sau khi submit
     setFormData({
       name: '',
@@ -159,7 +163,7 @@ const FormContact = () => {
                 </div>
                 {/* Thêm reCAPTCHA */}
                 <ReCAPTCHA
-                  sitekey="6LeABwQrAAAAANkIfZ6aM-HidpVSLDDRtMvfHZc7" // Thay thế bằng site key của bạn
+                  sitekey="6LeLBwQrAAAAAOFYLOk9vz8bsxBzqSBpudsEZxnc" // Thay thế bằng site key của bạn
                   onChange={handleCaptchaChange} // Hàm xử lý khi người dùng hoàn thành CAPTCHA
                 />
                 <Button
