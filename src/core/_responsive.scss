@@ -236,6 +236,13 @@
       gap: 2.4rem;
     }
   }
+  .news_section {
+    .news_body,
+    .news_right,
+    .news_content {
+      grid-template-columns: unset !important;
+    }
+  }
 }
 @include min-max($mobile, $tablet) {
   .sec_gap {

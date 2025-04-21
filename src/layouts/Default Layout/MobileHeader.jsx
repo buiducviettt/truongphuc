@@ -59,6 +59,7 @@ const MobileHeader = ({ menu }) => {
               }`}
             >
               <Link
+                style={{ fontSize: '2rem' }}
                 to={item.url}
                 className="navbar_link"
                 onClick={() => setIsMenuOpen(false)}

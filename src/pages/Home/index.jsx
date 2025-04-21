@@ -53,7 +53,14 @@ const Home = () => {
   const [mainImage, setMainImage] = useState('');
   const [dataService, setDataService] = useState(null);
   const [dataPost, setDataPost] = useState([]);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
 
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -116,6 +123,9 @@ const Home = () => {
   const handleNavigation = (id) => {
     navigate(`/news/${id}`);
   };
+  const handleDetail = (id) => {
+    navigate(`/service/${id}`);
+  };
   return (
     <DefaultLayout>
       <div className="homepage">
@@ -133,9 +143,9 @@ const Home = () => {
                     {dataHome.banner_section.subtitle}
                   </p>
                   <Button
-                    title="Tìm hiểu ngay"
+                    title={dataHome.banner_section?.button_text}
                     className="btn_banner"
-                    link={dataHome.banner}
+                    link={dataHome.banner_section?.button_link}
                   />
                 </div>
               </div>
@@ -163,81 +173,102 @@ const Home = () => {
               </div>
               {/* Ảnh chính */}
               <div className="home_intro_wrapper ">
-                <div className="container">
-                  {/* Section dịch vụ */}
-                  <div className="sec_gap services_section">
-                    <Cloud />
+                {/* Section dịch vụ */}
+                <div className="sec_gap services_section">
+                  <Cloud />
+                  <div className="inner">
+                    <div
+                      className="service_header d-flex flex-column justify-content-center"
+                      data-aos="fade-up"
+                    >
+                      <div className="container">
+                        <h2 className="text-white title text-center">
+                          Dịch vụ mà{' '}
+                          <span className="is_highlight">
+                            chúng tôi cung cấp
+                          </span>
+                        </h2>
+                        <p className="desc text-white text-justify">
+                          {dataHome.featured_services.desc}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="service_body">
+                      <div className="services_list">
+                        {isMobile ? (
+                          <Swiper
+                            centeredSlides={true}
+                            loop={true}
+                            slidesPerView={1}
+                            spaceBetween={20}
+                          >
+                            {dataService.map((service, index) => (
+                              <SwiperSlide key={index}>
+                                <div className="service_info">
+                                  <div className="inner">
+                                    <h2 className="text-white">
+                                      {service.title.rendered}
+                                    </h2>
+                                    <p className="text-white">
+                                      {service.acf.short_desc}
+                                    </p>
+                                    <Button
+                                      className="seemore_btn"
+                                      title="Tìm hiểu thêm"
+                                      onClick={() => handleDetail(service.id)}
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  className="service_img"
+                                  style={{ width: '50rem' }}
+                                >
+                                  <img
+                                    src={service.acf.category_image?.url}
+                                    alt=""
+                                  />
+                                </div>
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        ) : (
+                          <div>
+                            <Swiper
+                              className="service_swiper"
+                              slidesPerView={3}
+                              allowTouchMove={false}
+                            >
+                              {dataService.map((service, index) => {
+                                const isCenter = index === 1;
+                                const isHovered = index === hoveredIndex;
+                                const isNotHovered =
+                                  hoveredIndex !== null && !isHovered;
 
-                    <div className="container">
-                      <div className="inner">
-                        <div
-                          className="service_header d-flex flex-column justify-content-center"
-                          data-aos="fade-up"
-                        >
-                          <h2 className="text-white title text-center">
-                            Dịch vụ mà{' '}
-                            <span className="is_highlight">
-                              chúng tôi cung cấp
-                            </span>
-                          </h2>
-                          <p className="desc text-white text-justify">
-                            {dataHome.featured_services.desc}
-                          </p>
-                        </div>
-                        <div className="service_body">
-                          <div className="services_list">
-                            {isMobile ? (
-                              <Swiper
-                                centeredSlides={true}
-                                loop={true}
-                                autoplay={{
-                                  delay: 0, // Thời gian giữa mỗi slide (3s)
-                                  disableOnInteraction: false, // Không dừng khi người dùng tương tác
-                                }}
-                                freeMode={true}
-                                speed={7000} // Tốc độ chuyển slide (1s)
-                                modules={[Autoplay]} // Thêm module autoplay
-                                slidesPerView={1}
-                                spaceBetween={20}
-                              >
-                                {dataService.map((service, index) => (
-                                  <SwiperSlide key={index}>
-                                    <div className="service_info">
-                                      <div className="inner">
-                                        <h2 className="text-white">
-                                          {service.title.rendered}
-                                        </h2>
-                                        <p className="text-white">
-                                          {service.acf.short_desc}
-                                        </p>
-                                        <Button
-                                          className="seemore_btn"
-                                          title="Tìm hiểu thêm"
-                                        />
-                                      </div>
-                                    </div>
-                                    <div
-                                      className="service_img"
-                                      style={{ width: '50rem' }}
-                                    >
-                                      <img
-                                        src={service.acf.category_image?.url}
-                                        alt=""
-                                      />
-                                    </div>
-                                  </SwiperSlide>
-                                ))}
-                              </Swiper>
-                            ) : (
-                              <>
-                                {dataService.map((service, index) => (
-                                  <div
+                                return (
+                                  <SwiperSlide
+                                    aria-label={`Slide ${index + 1} of ${
+                                      dataService.length
+                                    }: ${service.title.rendered}`}
                                     key={index}
-                                    className="row row_services"
-                                    data-aos="fade-up"
+                                    className={`
+              custom_slide
+              ${isCenter ? 'center_slide' : ''}
+              ${isHovered ? 'hovered' : ''}
+              ${
+                isCenter && hoveredIndex !== null && hoveredIndex !== 1
+                  ? 'center_shrink'
+                  : ''
+              }
+            `}
+                                    onMouseEnter={() => handleMouseEnter(index)}
+                                    onMouseLeave={handleMouseLeave}
                                   >
                                     {' '}
-                                    <div className="service_info_wrapper col col-12 col-md-6">
+                                    <div
+                                      className={`service_info_wrapper ${
+                                        hoveredIndex === index ? 'show' : ''
+                                      }`}
+                                    >
                                       <div className="service_info">
                                         <div className="inner">
                                           <h2 className="text-white">
@@ -247,13 +278,16 @@ const Home = () => {
                                             {service.acf.short_desc}
                                           </p>
                                           <Button
+                                            onClick={() =>
+                                              handleDetail(service.id)
+                                            }
                                             className="seemore_btn"
                                             title="Tìm hiểu thêm"
                                           />
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="col col-12 col-md-6">
+                                    <div className="service_img_wrapper">
                                       <div className="service_img">
                                         <img
                                           src={service.acf.category_image?.url}
@@ -261,17 +295,18 @@ const Home = () => {
                                         />
                                       </div>
                                     </div>
-                                  </div>
-                                ))}
-                              </>
-                            )}
+                                  </SwiperSlide>
+                                );
+                              })}
+                            </Swiper>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
-                  <IntroWrapper />
                 </div>
+                <IntroWrapper />
+
                 <IntroGalerry />
                 <ReasonWrapper />
                 <Partner />
