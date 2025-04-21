@@ -31,45 +31,50 @@ const IntroWrapper = () => {
   ];
   return (
     <div className="home_intro_inner">
-      <div className="bird_animation">
-        <div className=" bird bird_1"></div>
-        <div className=" bird bird_2"></div>
-        <div className=" bird bird_3"></div>
-        <div className="bird bird_4"></div>
-        <div className=" bird bird_5"></div>
-      </div>
-      <div className="intro_content" data-aos="fade-up">
-        <div className="intro_title">
-          <h2 className="text-white text_title text_intro ">
-            {dataHome.home_desc.home_desc_title}
-          </h2>
+      <div className="container">
+        <div className="bird_animation">
+          <div className=" bird bird_1"></div>
+          <div className=" bird bird_2"></div>
+          <div className=" bird bird_3"></div>
+          <div className="bird bird_4"></div>
+          <div className=" bird bird_5"></div>
         </div>
 
-        <div className="intro_desc">
-          <div className="right_content ">
-            <p className="text-white">{dataHome.home_desc.home_desc_detail}</p>
-            <div className="box_numbers">
-              {highlight_number.map((number) => (
-                <div key={number.id} className="box_number" ref={ref}>
-                  <div className={`number_detail `}>
-                    {inView && (
-                      <CountUp
-                        start={0}
-                        end={parseFloat(number.number)}
-                        duration={3}
-                        separator=","
-                        decimalPlaces={2}
-                      />
-                    )}
+        <div className="intro_content" data-aos="fade-up">
+          <div className="intro_title">
+            <h2 className="text-white text_title text_intro ">
+              {dataHome.home_desc.home_desc_title}
+            </h2>
+          </div>
+
+          <div className="intro_desc">
+            <div className="right_content ">
+              <p className="text-white">
+                {dataHome.home_desc.home_desc_detail}
+              </p>
+              <div className="box_numbers">
+                {highlight_number.map((number) => (
+                  <div key={number.id} className="box_number" ref={ref}>
+                    <div className={`number_detail `}>
+                      {inView && (
+                        <CountUp
+                          start={0}
+                          end={parseFloat(number.number)}
+                          duration={3}
+                          separator=","
+                          decimalPlaces={2}
+                        />
+                      )}
+                    </div>
+                    <p className="text-white">{number.content}</p>
                   </div>
-                  <p className="text-white">{number.content}</p>
+                ))}
+                <div className="24/7_content">
+                  <p className="box_number number_detail">24/7</p>
+                  <p className="text-white">
+                    {dataHome.special_number.content_3}
+                  </p>
                 </div>
-              ))}
-              <div className="24/7_content">
-                <p className="box_number number_detail">24/7</p>
-                <p className="text-white">
-                  {dataHome.special_number.content_3}
-                </p>
               </div>
             </div>
           </div>
